@@ -1,0 +1,58 @@
+﻿@model MoviesSite.Models.Movie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Movie</h2>
+
+@using (Html.BeginForm("Edit", "Movie", FormMethod.Post))
+{
+    
+<div class="form-horizontal">
+    <h4>Movie</h4>
+    <hr />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+
+    <label>
+        IMAGING:
+        @*<img src="@movie.Image" width="200" />*@
+        <input type="text" name="Image" id="Image" />
+       @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+    </label>
+    <label>
+        Name:
+        <input type="text" name="Name" id="Name" />
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </label>
+    <label>
+        Date:
+        <input type="text" name="Date" id="Date" />
+        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+    </label>
+    <label>
+        MovieGenre:
+        @*<input type="text" name="MovieGenre" id="MovieGenre" />*@
+        @*@Html.ValidationMessageFor(model => model.MovieGenre, "", new { @class = "text-danger" })*@
+        @Html.EnumDropDownListFor(model => model.MovieGenre, "", new { @class = "text-danger" })
+    </label>
+    <label>
+        Description:
+<input type="text" name="Description" id="Description"/>
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </label>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save changes" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Main Page", "Index")
+</div>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MoviesSite.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style="text-align : center">
+    @*<h1>
+       
+            MOVIES<body style="background-color : black">
+        
+    </h1>*@
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>@TempData["Success"]</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var movie in Model)
+    {
+    <tr>
+        <td>
+            <img src="@movie.Image" width="200" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => movie.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Read More", "Details", "Movie", new { ID = movie.ID }, new { })
+        </td>
+    </tr>
+    }
+</table>
+
+
+
+
+
+
+
+
